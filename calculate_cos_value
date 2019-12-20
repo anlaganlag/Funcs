@@ -1,0 +1,7 @@
+import math
+def foo(val):
+    rv = math.acos(val)/math.pi
+    return f'{rv:.4} pi or {rv*180:.4}度'
+# foo(1/2**0.5)
+for i in range(-100,101):
+    print(i/100,foo(i/100))

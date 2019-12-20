@@ -7,4 +7,5 @@ def foo(ini,p,q,times):
        times is the how many ele you want
     """
     g=it.accumulate(it.repeat(ini),lambda x,_:x*p + q)
+    #every accmulate (iteror,funt(arg1,arg2))
     return list(next(g) for _ in range (times))
