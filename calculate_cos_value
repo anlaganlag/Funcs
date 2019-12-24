@@ -1,5 +1,6 @@
 import math
 def foo(val):
+	""" cal  any value that in [-1,1] to obtain the cos angle"""
     rv = math.acos(val)/math.pi
     return f'{rv:.4} pi or {rv*180:.4}度'
 # foo(1/2**0.5)
