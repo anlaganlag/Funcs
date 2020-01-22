@@ -37,8 +37,37 @@ def w(a1,a2):
 
 
 print(w(0,0))
-    
 
-collections 的defaultdict
+"""
+#加上計算的功能
+
+from collections import defaultdict
+j1,j2,aim = 97,337,255
+visited = defaultdict(lambda:False)
+count=0
+
+def w(a1,a2):
+    global count
+    if (a1==aim and a2 == 0 ) or (a2==aim and a1==0):
+        print((a1,a2),count+1)
+        return True
+    if visited[(a1,a2)] == False:
+        count += 1
+        print((a1,a2,count))
+        
+        visited[(a1,a2)] = True
+        return  w(a1,0) or\
+                w(0,a2)or\
+                w(j1,a2)or\
+                w(a1,j2)or\
+                w(a1+min(j1-a1,a2),a2-min(j1-a1,a2))or\
+                w(a1-min(j2-a2,a1),a2+min(j2-a2,a1))
+    else:
+        return False
+print("Steps:") 
+w(91,337)
+
+    
+"""
 
 
