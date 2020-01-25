@@ -32,7 +32,6 @@ def p(t):
         return('type1 No Closing brace to match')
     return True
 tn="0{abc}{de}(f)[(g)]9"
-
 t0="{abc}{de}(f)[(g) "
 t1="f(d)2"
 t2="f(d2"
