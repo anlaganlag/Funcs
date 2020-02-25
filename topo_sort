@@ -1,0 +1,55 @@
+class Graph:
+    def __init__(self,ver):
+        self.graph = defaultdict(list)
+#簡單來說如果value想默認是list,就可以使用defaultdict(list) 這個樣子
+#這裏其實就是存儲對應頂點的al就
+        #字典裏保存的是al
+        self.V = ver
+        #頂點的數字
+    def addEdge(self,u,v):
+#從空圖到構建完成圖只需要addEdge即可u是前一個頂點,v是後一個頂點
+        self.graph[u].append(v)
+#由於數據結構是{int-vertice :list } 的形式
+基本也是G保存數據的
+    def topologicalSortUtil(self,v,visited,stack):
+    #比較容易忘記的的是有一個記錄是否訪問過的相當於染gray
+#這裏定義的是遞歸的算法
+        visited [v]= True
+#已經訪問的相當與之前的染成了灰色
+        for i in self.graph[v]:
+        #其實還是對染灰的點進行遍歷
+        #所以只針對一個一個sourcce
+#遍歷當前節點的所有子節點
+            if visited[i] == False:
+#如果是沒有探索過的,就遞歸地調用探索但錢節點
+                self.topologicalSortUtil(i,visited,stack)
+        stack.insert(0,v)
+#所有的子節點全部探索完畢,相當於染成黑色
+# 首次發現是灰色`
+#也相當於之前的完成搜索 fs
+#其實還之前的定義是相同的,即結束搜索的時候的序列
+    def topologicalSort(self):
+#這裏是正式搜索的過程
+        visited=[False] * self.V
+        stack = []
+#兩步都是初始化的過程
+        
+        for i in range(self.V):
+            if visited[i] == False:
+                self.topologicalSortUtil(i,visited,stack)
+                
+        print(stack)
+g= Graph(6) 
+g.addEdge(5, 2); 
+g.addEdge(5, 0); 
+g.addEdge(4, 0); 
+g.addEdge(4, 1); 
+g.addEdge(2, 3); 
+g.addEdge(3, 1); 
+  
+print ("Following is a Topological Sort of the given graph")
+g.topologicalSort() 
+        
+
+
+
