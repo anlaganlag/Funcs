@@ -1,3 +1,36 @@
+"""
+遍历lightss持续更新关注序号最大的灯:
+
+在遍历时:
+如果遇到灯的index小于last的号码,则证明last前面还有空位.
+
+如果遇到的灯的index大于last的号码,则更新本灯为新的last
+python
+        last= max(last,cur)# 用last记录最后的灯
+如果最后的last的号码和当前遇到灯的index一致的时,证明last及last前的灯都是亮的
+python
+        ans +=1
+代码
+"""
+class Solution:
+    def numTimesAllBlue(self, light: List[int]) -> int:
+#一句话理解就是last就是开坑,index追上last的过程就是填坑的过程
+#如果index追上了last,那么就是坑已经填满
+        n = len(light)
+        last = ans =0
+        for i,cur in enumerate(light,1):
+            last= max(last,cur)
+#这个记录最大值的常用套路
+            if i == last:
+                ans +=1
+        return ans
+
+#简单来理解就是..last决定要填充的坑有多大
+#index决定已经填充的材料有多少
+#假设坑和材料相等,即已经填充完毕..
+   #如果每次坑增加1,且材料增加1则满足的情况+1
+   #否则又得坑和材料相等才能满足情况一次
+
 def open_light(light):
     """
     思路是考慮當前位置前後的情況:
