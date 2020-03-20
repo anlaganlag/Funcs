@@ -1,0 +1,20 @@
+def pivot(ar,l,r):
+	
+    p_idx = l
+    #首先是p是左端,不妨假設所有的元素都比p大
+    p_val = ar[r]
+    #p_val就是所謂的金標準..小於等於的在左邊,..    
+    #有了上面的p_idx和p_val之後就是遍歷一邊進行比較.
+    #t代表嘗試遍歷中的所有可能性
+    for t in range(l,r):
+        if ar[t] <= p_val:
+            ar[t],ar[p_idx] = ar[p_idx],ar[t]
+            #將大於p_val的ar[p_idx]大爺取代,小於的即ar[try]的位置
+            p_idx +=1
+    ar[p_idx],ar[r] = ar[r],ar[p_idx]
+    return p_idx
+
+s2=[3, 1, 2, 8, 6, 5, 7, 4]
+pivot(s2,0,7)        
+
+
