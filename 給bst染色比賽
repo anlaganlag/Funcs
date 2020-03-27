@@ -1,0 +1,13 @@
+class Solution:
+    def btreeGameWinningMove(self, root: TreeNode, n: int, x: int) -> bool:
+        l,r =0,0
+        def h(n):
+            nonlocal l,r
+            if not n:
+                return 0
+            le,ri = h(n.left),h(n.right)
+            if n.val == x:
+                l,r = le,ri
+            return le+ri+1
+        h(root)
+        return max(n-l-r-1,l,r)>n//2
