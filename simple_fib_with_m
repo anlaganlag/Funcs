@@ -1,0 +1,11 @@
+# from functools import lru_cache
+# @lru_cache
+m = {0:1,1:1}
+def fib(n):
+    if n in m:
+        return m[n]
+    rv = fib(n-2)+fib(n-1)
+    m[n] = rv
+    return rv
+#有點類似自底向上的的
+k
