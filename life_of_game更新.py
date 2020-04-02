@@ -1,3 +1,24 @@
+
+class Solution:
+    def gameOfLife(self, g: List[List[int]]) -> None:
+        r,c = len(g),len(g[0])
+#用點表示比較容易向導也比較流行
+        nbs = [(-1,-1),(-1,0),(-1,1),(0,-1),(0,1),(1,-1),(1,0),(1,1)]
+#一行快速復制..
+        t = [[g[y][x] for x in range(c)] for y in range(r)]
+        for y in range(r):
+            for x in range(c):
+#默認死活cell默認爲死,則只要考慮生的狀態
+                cell ,cnt = 0,0
+                for nb in nbs:
+                    y_=y+nb[0]
+                    x_=x+nb[1]
+                    if  (0<=y_<r) and (0<=x_<c) and t[y_][x_] == 1:
+                        cnt +=1
+                if (t[y][x] == 0 and cnt == 3) or (t[y][x] == 1 and (cnt==2 or cnt==3)):
+                    cell = 1
+                g[y][x] = cell
+
 class Solution:
     def gameOfLife(self, g: List[List[int]]) -> None:
         """
@@ -46,3 +67,30 @@ class Solution:
             for  j in range(c):    
                 g[i][j] =tmp[i][j]
      
+
+class Solution:
+    def gameOfLife(self, g: List[List[int]]) -> None:
+        def h():
+            nonlocal tmp,g
+            for y in range(r):
+                for x in range(c):
+                    cnt ,cell = 0,0
+                    for nb in nbs:
+                        y_ = (y + nb[0])
+                        x_ = (x + nb[1])
+                        if  (0 <=  y_ < r)  and (0 <=  x_<  c) and g[y_][x_] == 1:
+                            cnt += 1
+                    if (g[y][x] == 0 and cnt == 3 )or (g[y][x] == 1 and (cnt == 2 or cnt == 3)):
+                            cell = 1
+                    tmp[y][x]= cell
+        r,c=len(g), len(g[0])
+        nbs = [(1,0), (1,-1), (0,-1), (-1,-1), (-1,0), (-1,1), (0,1), (1,1)]    
+        tmp = [[g[y][x] for x in range(c)] for y in range(r)]
+        h()
+        g = [[tmp[y][x] for x in range(c)] for y in range(r)]
+                
+
+
+
+
+
