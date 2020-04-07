@@ -2,18 +2,18 @@ class Solution:
     def findRestaurant(self, l1: List[str], l2: List[str]) -> List[str]:
         ans=[]
         n,m = len(l1),len(l2)
-        max_idx =m+n
+        max_=m+n
         memo={v:i for i,v in enumerate(l1)}
         for i,v in enumerate(l2):
             if v in memo:
-                cur_idx= memo[v]+i
-                if cur_idx<max_idx:
+                cur= memo[v]+i
+                if cur<max_:
                     ans=[v]
-                    max_idx=cur_idx
-                elif cur_idx==max_idx:
+                    max_=cur
+                elif cur==max_:
                     ans.append(v)
         return ans
-
+                    
 
 
 """
