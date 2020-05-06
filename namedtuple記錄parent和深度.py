@@ -1,3 +1,6 @@
+
+lc993
+
 from collections import namedtuple
 class Solution:
     def isCousins(self, root: TreeNode, x: int, y: int) -> bool:
