@@ -1,0 +1,32 @@
+class Solution:
+    def isSubtree(self, s: TreeNode, t: TreeNode) -> bool:
+#如果都不存在爲真
+        if not s and not t:
+            return True
+#如果只有一個不存在爲假
+        if not s or not t:
+            return False
+#分別用當前left和right測試是否是相等的樹....
+        return self.isSameTree(s, t) or self.isSubtree(s.left, t) or self.isSubtree(s.right, t)
+        
+    def isSameTree(self, s, t):
+        if not s and not t:
+            return True
+        if not s or not t:
+            return False
+#滿足相同的樹要求是值相等..
+#且對應的left/right都相等..
+        return s.val == t.val and self.isSameTree(s.left, t.left) and self.isSameTree(s.right, t.right)
+
+
+
+
+
+sorted(words, key=lambda w: [order.index(x) for x in w])
+#排序的key函數是真的牛逼..
+#key對應的是一個函數..
+#key = lambda w:
+#用的函數的參數名字是w..
+
+
+
