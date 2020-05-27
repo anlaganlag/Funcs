@@ -10,6 +10,8 @@ class Solution:
         return sum(i*(i-1)//2 for i in Kmod)      
         #排列..
 
+#判断子数组的和能否被 KK 整除就等价于判断 (P[j] - P[i-1]) \bmod K == 0(P[j]−P[i−1])modK==0，根据 同余定理，只要 P[j] \bmod K == P[i-1] \bmod KP[j]modK==P[i−1]modK，就可以保证上面的等式成立。
+#
 
 
 """
