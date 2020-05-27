@@ -8,8 +8,11 @@ def bubble_sort(ar):
 	"""
 		
     n = len(ar)
-    for i in range(n-1):
-        for j in range(n-i-1):
+    for i in range(n-1):#i就是記錄要排序的n-1位,n-1位已經確定了則排序已經完成..
+        for j in range(n-i-1):#首先要明白n個數字如果1的n-1都是排列正確的情況..則0也是排列正確的情況
+        						
+        					#即首先是最後確定正確的順序..一次確定到1位,第0位無需排序..
+        					#j就是在依次確定n-1到1位過程中..j是在進行冒泡..
             if ar[j]>ar[j+1]:
                 ar[j],ar[j+1] = ar[j+1],ar[j]
     return ar
