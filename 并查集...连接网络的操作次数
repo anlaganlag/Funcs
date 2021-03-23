@@ -1,0 +1,55 @@
+/**
+ * @param {number} n
+ * @param {number[][]} connections
+ * @return {number}
+ */
+var makeConnected = function(n, connections) {
+    const unionFind = new Unionfind(n);
+       let count = 0;
+       for(let i = 0; i < connections.length; i++) {
+           const [a,b] = connections[i];
+           unionFind.union(a,b);
+           count++;
+       }
+       // 每一条边就是一条线缆，如果线缆少于n - 1，则不可能连接所有电脑
+       if(count < n - 1) return -1;
+   
+       // 找出有多少连通分量。需要的操作次数是所有连通分量 - 1
+       let single = 0;
+       for(let i = 0; i < n; i++) {
+           if(i === unionFind.parent[i]) single++;
+       }
+   
+       return single - 1;
+   };
+   
+   
+   class Unionfind {
+       constructor(n) {
+           this.parent = new Array(n);
+           this.rank = new Array(n);
+           for(let i = 0; i < n; i++) {
+               this.parent[i] = i;
+               this.rank[i] = 1;
+           }
+       }
+   
+       find(x) {
+           return this.parent[x] === x ? x : this.find(this.parent[x]);
+       }
+   
+       union(x,y) {
+           const {parent,rank} = this;
+           let rootX = this.find(x);
+           let rootY = this.find(y);
+           if(rootX === rootY) return;
+   
+           if(rank[rootX] > rank[rootY]) {
+               [rootX,rootY] = [rootY,rootX];
+           }
+           parent[rootX] = rootY;
+           rank[rootY] += rank[rootX];
+       }
+   }
+
+
